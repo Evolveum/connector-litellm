@@ -1,0 +1,9 @@
+# Connector manifest for the low-code SCIMREST connector (loaded by ManifestBasedConnector).
+# As the connector gets implemented, reference its schema and operation scripts under
+# the "connector" section (see ../scimrest-connector for examples).
+application:
+  name: "LiteLLM Connector"
+  description: "LiteLLM is a proxy server for LLM APIs providing unified OpenAI-compatible access."
+connector:
+  schema: []
+  operation: []
