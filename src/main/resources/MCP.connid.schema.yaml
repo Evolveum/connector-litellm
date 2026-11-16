@@ -1,0 +1,6 @@
+# LiteLLM MCP server - ConnId mapping.
+objectClasses:
+  MCP:
+    connId:
+      UID: server_id
+      NAME: server_name

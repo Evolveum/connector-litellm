@@ -1,0 +1,25 @@
+# LiteLLM Guardrail - native (REST/JSON) schema.
+# Data comes from GET /guardrails/list ({"guardrails": [...]}) and
+# GET /guardrails/{guardrail_id}/info. The structured litellm_params/guardrail_info payloads
+# are intentionally not exposed.
+objectClasses:
+  Guardrail:
+    description: "A guardrail (pre/post-call policy) configured in the LiteLLM proxy"
+    attributes:
+      guardrail_id:
+        jsonType: string
+        description: "Unique guardrail identifier"
+      guardrail_name:
+        jsonType: string
+        description: "Name of the guardrail"
+      guardrail_definition_location:
+        jsonType: string
+        description: "Where the guardrail is defined (config, database, ...)"
+      created_at:
+        jsonType: string
+        openApiFormat: date-time
+        description: "Creation timestamp"
+      updated_at:
+        jsonType: string
+        openApiFormat: date-time
+        description: "Last update timestamp"

@@ -1,0 +1,36 @@
+{
+  "users": [
+    {
+      "user_id": "user-tony",
+      "user_alias": "tony",
+      "user_email": "tony@example.com",
+      "user_role": "proxy_admin",
+      "sso_user_id": null,
+      "team_id": null,
+      "organization_id": "org-1",
+      "password_reset_required": null,
+      "last_breach_check_at": null,
+      "teams": [
+        "team-alpha",
+        "team-beta"
+      ],
+      "max_budget": 1000.0,
+      "spend": 504.2544341400017,
+      "models": [],
+      "max_parallel_requests": null,
+      "tpm_limit": null,
+      "rpm_limit": null,
+      "budget_duration": null,
+      "budget_reset_at": null,
+      "allowed_cache_controls": [],
+      "policies": [],
+      "key_count": 2,
+      "created_at": "2025-06-10T20:08:05.932000Z",
+      "updated_at": "2026-11-16T11:08:27.009000Z"
+    }
+  ],
+  "total": 1,
+  "page": 1,
+  "page_size": 25,
+  "total_pages": 1
+}

@@ -1,0 +1,65 @@
+# LiteLLM Agent - native (REST/JSON) schema.
+# Data comes from GET /v1/agents (bare array) and GET /v1/agents/{agent_id}.
+# The agent card (agent_card_params) and identity binding are structured payloads and are
+# intentionally not exposed.
+objectClasses:
+  Agent:
+    description: "A LiteLLM agent (autonomous or delegated) exposed by the proxy"
+    attributes:
+      agent_id:
+        jsonType: string
+        description: "Unique agent identifier"
+      agent_name:
+        jsonType: string
+        description: "Name of the agent"
+      enabled:
+        jsonType: boolean
+        description: "Whether the agent is enabled"
+      execution_mode:
+        jsonType: string
+        description: "Execution mode (autonomous, delegated, both)"
+      identity_managed:
+        jsonType: boolean
+        description: "Whether the agent identity is managed by the proxy"
+      jwt_auth_configured:
+        jsonType: boolean
+        description: "Whether JWT auth is configured for the agent"
+      spend:
+        jsonType: number
+        openApiFormat: double
+        description: "Spend (USD) attributed to the agent"
+      tpm_limit:
+        jsonType: integer
+        description: "Tokens per minute limit"
+      rpm_limit:
+        jsonType: integer
+        description: "Requests per minute limit"
+      session_tpm_limit:
+        jsonType: integer
+        description: "Tokens per minute limit per session"
+      session_rpm_limit:
+        jsonType: integer
+        description: "Requests per minute limit per session"
+      extra_headers:
+        jsonType: string
+        multiValued: true
+        description: "Extra headers applied to agent requests"
+      access_group_ids:
+        jsonType: string
+        multiValued: true
+        description: "Access groups the agent is scoped to"
+      created_at:
+        jsonType: string
+        openApiFormat: date-time
+        description: "Creation timestamp"
+      updated_at:
+        jsonType: string
+        openApiFormat: date-time
+        description: "Last update timestamp"
+      created_by:
+        jsonType: string
+        description: "User that created the agent"
+      updated_by:
+        jsonType: string
+        description: "User that updated the agent last"
+

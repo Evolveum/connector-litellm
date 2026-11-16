@@ -1,0 +1,6 @@
+# LiteLLM Team - ConnId mapping.
+objectClasses:
+  Team:
+    connId:
+      UID: team_id
+      NAME: team_alias

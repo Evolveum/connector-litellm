@@ -1,9 +1,40 @@
 # Connector manifest for the low-code SCIMREST connector (loaded by ManifestBasedConnector).
-# As the connector gets implemented, reference its schema and operation scripts under
-# the "connector" section (see ../scimrest-connector for examples).
+# The LiteLLM connector is fully described by the schema and operation scripts below:
+# no per-connector Java code is needed.
 application:
-  name: "LiteLLM Connector"
-  description: "LiteLLM is a proxy server for LLM APIs providing unified OpenAI-compatible access."
+  name: "LiteLLM"
+  description: "LiteLLM is a proxy server for LLM APIs providing unified OpenAI-compatible access.
+    This connector exposes the proxy's inventory (users, virtual keys, models, deployments,
+    agents, MCP servers, guardrails, teams and organizations) as read-only objects."
 connector:
-  schema: []
-  operation: []
+  schema:
+    - script: /User.native.schema.yaml
+    - script: /User.connid.schema.yaml
+    - script: /VirtualKey.native.schema.yaml
+    - script: /VirtualKey.connid.schema.yaml
+    - script: /Model.native.schema.yaml
+    - script: /Model.connid.schema.yaml
+    - script: /Endpoint.native.schema.yaml
+    - script: /Endpoint.connid.schema.yaml
+    - script: /Agent.native.schema.yaml
+    - script: /Agent.connid.schema.yaml
+    - script: /MCP.native.schema.yaml
+    - script: /MCP.connid.schema.yaml
+    - script: /Guardrail.native.schema.yaml
+    - script: /Guardrail.connid.schema.yaml
+    - script: /Team.native.schema.yaml
+    - script: /Team.connid.schema.yaml
+    - script: /Organization.native.schema.yaml
+    - script: /Organization.connid.schema.yaml
+    # Reference attributes declared as relationships (subject/object roles required by midPoint)
+    - script: /relationships.schema.groovy
+  operation:
+    - script: /User.search.yaml
+    - script: /VirtualKey.search.yaml
+    - script: /Model.search.yaml
+    - script: /Endpoint.search.yaml
+    - script: /Agent.search.yaml
+    - script: /MCP.search.yaml
+    - script: /Guardrail.search.yaml
+    - script: /Team.search.yaml
+    - script: /Organization.search.yaml

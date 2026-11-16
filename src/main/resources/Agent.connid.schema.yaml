@@ -1,0 +1,6 @@
+# LiteLLM Agent - ConnId mapping.
+objectClasses:
+  Agent:
+    connId:
+      UID: agent_id
+      NAME: agent_name

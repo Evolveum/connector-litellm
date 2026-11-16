@@ -1,0 +1,6 @@
+# LiteLLM Organization - ConnId mapping.
+objectClasses:
+  Organization:
+    connId:
+      UID: organization_id
+      NAME: organization_alias

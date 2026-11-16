@@ -1,0 +1,6 @@
+# LiteLLM Virtual Key - ConnId mapping.
+objectClasses:
+  VirtualKey:
+    connId:
+      UID: token
+      NAME: key_name

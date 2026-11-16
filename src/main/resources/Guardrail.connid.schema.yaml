@@ -1,0 +1,6 @@
+# LiteLLM Guardrail - ConnId mapping.
+objectClasses:
+  Guardrail:
+    connId:
+      UID: guardrail_id
+      NAME: guardrail_name

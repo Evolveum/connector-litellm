@@ -1,0 +1,57 @@
+[
+  {
+    "server_id": "mcp-1",
+    "server_name": "fetch",
+    "alias": "fetch-mcp",
+    "description": "Public web fetch server",
+    "url": "https://mcp.example.com/sse",
+    "spec_path": null,
+    "transport": "sse",
+    "auth_type": "oauth2",
+    "instructions": "Use me to fetch web pages",
+    "status": "healthy",
+    "last_health_check": "2026-11-16T05:00:00Z",
+    "is_config": true,
+    "allow_all_keys": true,
+    "mcp_access_groups": [],
+    "allowed_tools": [],
+    "extra_headers": [],
+    "teams": [],
+    "created_at": "2026-03-01T00:00:00Z",
+    "updated_at": "2026-03-01T00:00:00Z",
+    "created_by": "user-tony",
+    "updated_by": "user-tony"
+  },
+  {
+    "server_id": "mcp-2",
+    "server_name": "internal-tools",
+    "alias": null,
+    "description": null,
+    "url": "http://tools.example.com/mcp",
+    "spec_path": null,
+    "transport": "http",
+    "auth_type": "bearer",
+    "instructions": null,
+    "status": "unhealthy",
+    "last_health_check": "2026-11-16T05:00:00.000000",
+    "is_config": false,
+    "allow_all_keys": false,
+    "mcp_access_groups": [
+      "internal"
+    ],
+    "allowed_tools": [
+      "search"
+    ],
+    "extra_headers": [],
+    "teams": [
+      {
+        "team_id": "team-alpha",
+        "team_alias": "Alpha"
+      }
+    ],
+    "created_at": "2026-11-17T10:57:45.383683",
+    "updated_at": "2026-11-16T05:00:00.000000",
+    "created_by": "user-tony",
+    "updated_by": "user-tony"
+  }
+]

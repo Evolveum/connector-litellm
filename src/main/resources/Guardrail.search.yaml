@@ -1,0 +1,18 @@
+# LiteLLM Guardrail - search operations.
+# GET /guardrails/list lists all guardrails ({"guardrails": [...]});
+# GET /guardrails/{guardrail_id}/info reads one.
+objectClasses:
+  Guardrail:
+    search:
+      endpoints:
+        - path: /guardrails/list
+          emptyFilterSupported: true
+          objectsPath: $.guardrails
+        - path: /guardrails/{guardrail_id}/info
+          singleResult: true
+          notFoundIsNoResult: true
+          # guardrail_id is bound to __UID__, so this entry also serves UID filters.
+          supportedFilters:
+            - spec: attribute("guardrail_id").eq().anySingleValue()
+              request: |
+                request.pathParameter("guardrail_id", value)

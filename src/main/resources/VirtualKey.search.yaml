@@ -1,0 +1,41 @@
+# LiteLLM VirtualKey - search operations.
+# GET /key/list serves both the list (return_full_object=true for full rows) and
+# by-id lookups (key_hash parameter). The list is wrapped as {"keys": [...], ...}.
+objectClasses:
+  VirtualKey:
+    search:
+      endpoints:
+        - path: /key/list
+          emptyFilterSupported: true
+          objectsPath: $.keys
+          request:
+            queryParameters:
+              return_full_object: "true"
+          pagingSupport:
+            parameters:
+              pageSize:
+                in: query
+                name: size
+              page:
+                in: query
+          # token is bound to __UID__ (and key_name to __NAME__), so these entries also serve
+          # UID / NAME filters.
+          supportedFilters:
+            - spec: attribute("token").eq().anySingleValue()
+              request: |
+                request.queryParameter("key_hash", value)
+            - spec: attribute("key_alias").eq().anySingleValue()
+              request: |
+                request.queryParameter("key_alias", value)
+            - spec: attribute("key_name").contains().anySingleValue()
+              request: |
+                request.queryParameter("search", value)
+            - spec: attribute("user").eq().anySingleValue()
+              request: |
+                request.queryParameter("user_id", value.value.uid.uidValue)
+            - spec: attribute("team").eq().anySingleValue()
+              request: |
+                request.queryParameter("team_id", value.value.uid.uidValue)
+            - spec: attribute("organization").eq().anySingleValue()
+              request: |
+                request.queryParameter("organization_id", value.value.uid.uidValue)

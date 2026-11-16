@@ -1,0 +1,117 @@
+# LiteLLM Virtual Key - native (REST/JSON) schema.
+# Keys are listed by GET /key/list?return_full_object=true (flat key objects) and looked up by
+# their (hashed) token with the key_hash parameter. Map-valued fields (metadata, permissions,
+# model_spend, ...) are intentionally not exposed.
+objectClasses:
+  VirtualKey:
+    description: "A LiteLLM virtual key (API key) issued for a user, team or agent"
+    attributes:
+      token:
+        jsonType: string
+        description: "Hash of the key; the only identifier the proxy accepts for lookups"
+      key_name:
+        jsonType: string
+        description: "Masked key value as shown by the proxy (e.g. sk-...abcd)"
+      key_alias:
+        jsonType: string
+        description: "Alias / display name of the key"
+      key_type:
+        jsonType: string
+        description: "Type of the key (e.g. default, service_account)"
+      status:
+        jsonType: string
+        description: "Key status reported by the proxy (e.g. active)"
+      blocked:
+        jsonType: boolean
+        description: "Whether the key is blocked"
+      spend:
+        jsonType: number
+        openApiFormat: double
+        description: "Spend (USD) within the current budget window"
+      total_spend:
+        jsonType: number
+        openApiFormat: double
+        description: "Total spend (USD) since the key was created"
+      max_budget:
+        jsonType: number
+        openApiFormat: double
+        description: "Maximum budget (USD) for the key"
+      soft_budget:
+        jsonType: number
+        openApiFormat: double
+        description: "Soft budget (USD); requests fail above it while the hard budget allows"
+      expires:
+        jsonType: string
+        openApiFormat: date-time
+        description: "Key expiration timestamp"
+      models:
+        jsonType: string
+        multiValued: true
+        description: "Models the key is allowed to use (empty means all)"
+      max_parallel_requests:
+        jsonType: integer
+        description: "Maximum number of parallel requests"
+      tpm_limit:
+        jsonType: integer
+        description: "Tokens per minute limit"
+      rpm_limit:
+        jsonType: integer
+        description: "Requests per minute limit"
+      tpd_limit:
+        jsonType: integer
+        description: "Tokens per day limit"
+      budget_duration:
+        jsonType: string
+        description: "Duration of the budget period (e.g. 30d, 12h)"
+      budget_reset_at:
+        jsonType: string
+        openApiFormat: date-time
+        description: "When the budget window resets"
+      allowed_cache_controls:
+        jsonType: string
+        multiValued: true
+        description: "Cache controls the key is allowed to use"
+      allowed_routes:
+        jsonType: string
+        multiValued: true
+        description: "Routes the key is allowed to call (empty means all)"
+      auto_rotate:
+        jsonType: boolean
+        description: "Whether the key rotates automatically"
+      rotation_count:
+        jsonType: integer
+        description: "How many times the key has been rotated"
+      user_id:
+        jsonType: string
+        description: "Id of the user the key belongs to"
+      team_id:
+        jsonType: string
+        description: "Id of the team the key belongs to"
+      agent_id:
+        jsonType: string
+        description: "Id of the agent the key was issued for"
+      project_id:
+        jsonType: string
+        description: "Id of the project the key belongs to (multi-project setups)"
+      organization_id:
+        jsonType: string
+        description: "Id of the organization the key belongs to"
+      last_active:
+        jsonType: string
+        openApiFormat: date-time
+        description: "When the key was last used"
+      created_at:
+        jsonType: string
+        openApiFormat: date-time
+        description: "Creation timestamp"
+      updated_at:
+        jsonType: string
+        openApiFormat: date-time
+        description: "Last update timestamp"
+      created_by:
+        jsonType: string
+        description: "User that created the key"
+      updated_by:
+        jsonType: string
+        description: "User that updated the key last"
+

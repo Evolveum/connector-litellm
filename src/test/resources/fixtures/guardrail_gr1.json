@@ -1,0 +1,7 @@
+{
+  "guardrail_id": "gr-1",
+  "guardrail_name": "pii-filter",
+  "guardrail_definition_location": "database",
+  "created_at": "2026-05-01T00:00:00Z",
+  "updated_at": "2026-05-01T00:00:00Z"
+}

@@ -1,0 +1,29 @@
+# LiteLLM Endpoint (model deployment) - search operations.
+# GET /v2/model/info lists deployments (paginated, {"data": [...], ...}); the
+# modelId parameter resolves the deployment by its id and the model parameter
+# by the group name it serves.
+objectClasses:
+  Endpoint:
+    search:
+      endpoints:
+        - path: /v2/model/info
+          emptyFilterSupported: true
+          objectsPath: $.data
+          pagingSupport:
+            parameters:
+              pageSize:
+                in: query
+                name: size
+              page:
+                in: query
+          # id is bound to __UID__, so this entry also serves UID filters.
+          supportedFilters:
+            - spec: attribute("id").eq().anySingleValue()
+              request: |
+                request.queryParameter("modelId", value)
+            - spec: attribute("model_name").eq().anySingleValue()
+              request: |
+                request.queryParameter("model", value)
+            - spec: attribute("model").eq().anySingleValue()
+              request: |
+                request.queryParameter("model", value.value.uid.uidValue)

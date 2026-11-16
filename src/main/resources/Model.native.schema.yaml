@@ -1,0 +1,90 @@
+# LiteLLM Model (model group) - native (REST/JSON) schema.
+# A model group is the name clients address requests with; the proxy routes it to one or more
+# deployments (the Endpoint object class). Data comes from GET /model_group/info.
+objectClasses:
+  Model:
+    description: "A LiteLLM model group - the client-facing model name with its provider routes"
+    attributes:
+      model_group:
+        jsonType: string
+        description: "Name of the model group"
+      providers:
+        jsonType: string
+        multiValued: true
+        description: "Providers the group routes to"
+      mode:
+        jsonType: string
+        description: "Request mode (chat, completion, embedding, audio_transcription, ...)"
+      max_input_tokens:
+        jsonType: integer
+        description: "Maximum input tokens"
+      max_output_tokens:
+        jsonType: integer
+        description: "Maximum output tokens"
+      input_cost_per_token:
+        jsonType: number
+        openApiFormat: double
+        description: "Input cost per token (USD)"
+      output_cost_per_token:
+        jsonType: number
+        openApiFormat: double
+        description: "Output cost per token (USD)"
+      input_cost_per_pixel:
+        jsonType: number
+        openApiFormat: double
+        description: "Input cost per pixel (USD), for vision models"
+      tpm:
+        jsonType: integer
+        description: "Tokens per minute limit of the group"
+      rpm:
+        jsonType: integer
+        description: "Requests per minute limit of the group"
+      itpm:
+        jsonType: integer
+        description: "Image tokens per minute limit"
+      otpm:
+        jsonType: integer
+        description: "Output tokens per minute limit"
+      supports_function_calling:
+        jsonType: boolean
+        description: "Whether the group supports function calling"
+      supports_parallel_function_calling:
+        jsonType: boolean
+        description: "Whether the group supports parallel function calling"
+      supports_vision:
+        jsonType: boolean
+        description: "Whether the group supports vision input"
+      supports_web_search:
+        jsonType: boolean
+        description: "Whether the group supports web search"
+      supports_url_context:
+        jsonType: boolean
+        description: "Whether the group supports URL context"
+      supports_reasoning:
+        jsonType: boolean
+        description: "Whether the group supports reasoning output"
+      supports_fast_mode:
+        jsonType: boolean
+        description: "Whether the group supports fast mode"
+      supported_reasoning_efforts:
+        jsonType: string
+        multiValued: true
+        description: "Reasoning efforts the group supports"
+      supported_openai_params:
+        jsonType: string
+        multiValued: true
+        description: "OpenAI parameters the group accepts"
+      is_public_model_group:
+        jsonType: boolean
+        description: "Whether the group is public"
+      health_status:
+        jsonType: string
+        description: "Last health check status of the group"
+      health_response_time:
+        jsonType: number
+        openApiFormat: double
+        description: "Response time (ms) of the last health check"
+      health_checked_at:
+        jsonType: string
+        openApiFormat: date-time
+        description: "When the group was last health-checked"

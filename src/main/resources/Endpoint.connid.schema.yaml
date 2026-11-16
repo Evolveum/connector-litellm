@@ -1,0 +1,6 @@
+# LiteLLM Endpoint (model deployment) - ConnId mapping.
+objectClasses:
+  Endpoint:
+    connId:
+      UID: id
+      NAME: model_name

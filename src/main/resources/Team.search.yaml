@@ -1,0 +1,26 @@
+# LiteLLM Team - search operations.
+# GET /team/list lists teams (bare JSON array, filterable by member user_id or
+# organization_id); GET /team/info?team_id=... reads one (the team object is
+# nested under team_info in the response).
+objectClasses:
+  Team:
+    search:
+      endpoints:
+        - path: /team/list
+          responseFormat: JSON_ARRAY
+          emptyFilterSupported: true
+          supportedFilters:
+            - spec: attribute("members").eq().anySingleValue()
+              request: |
+                request.queryParameter("user_id", value.value.uid.uidValue)
+            - spec: attribute("organization").eq().anySingleValue()
+              request: |
+                request.queryParameter("organization_id", value.value.uid.uidValue)
+        - path: /team/info
+          singleResult: true
+          objectsPath: $.team_info
+          # team_id is bound to __UID__, so this entry also serves UID filters.
+          supportedFilters:
+            - spec: attribute("team_id").eq().anySingleValue()
+              request: |
+                request.queryParameter("team_id", value)

@@ -1,0 +1,16 @@
+# LiteLLM Model (model group) - search operations.
+# GET /model_group/info lists model groups ({"data": [...]}); the model_group
+# parameter resolves a single group. The endpoint is not paginated.
+objectClasses:
+  Model:
+    search:
+      endpoints:
+        - path: /model_group/info
+          emptyFilterSupported: true
+          objectsPath: $.data
+          # model_group is bound to both __UID__ and __NAME__, so this entry also serves
+          # UID / NAME filters.
+          supportedFilters:
+            - spec: attribute("model_group").eq().anySingleValue()
+              request: |
+                request.queryParameter("model_group", value)

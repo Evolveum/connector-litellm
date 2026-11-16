@@ -1,0 +1,40 @@
+{
+  "keys": [
+    {
+      "token": "tok-key-management",
+      "key_name": "sk-...kgUQ",
+      "key_alias": "Management",
+      "spend": 0.0,
+      "total_spend": 0.0,
+      "max_budget": null,
+      "soft_budget": null,
+      "expires": null,
+      "models": [],
+      "user_id": "user-tony",
+      "team_id": null,
+      "agent_id": null,
+      "project_id": null,
+      "max_parallel_requests": null,
+      "tpm_limit": null,
+      "rpm_limit": null,
+      "tpd_limit": null,
+      "budget_duration": null,
+      "budget_reset_at": null,
+      "allowed_cache_controls": [],
+      "allowed_routes": [],
+      "key_type": "default",
+      "blocked": null,
+      "org_id": "org-1",
+      "created_at": "2026-11-16T11:08:50.465000Z",
+      "created_by": "user-tony",
+      "updated_at": "2026-11-16T11:08:50.465000Z",
+      "updated_by": "user-tony",
+      "last_active": null,
+      "rotation_count": 0,
+      "auto_rotate": false
+    }
+  ],
+  "total_count": 1,
+  "current_page": 1,
+  "total_pages": 1
+}

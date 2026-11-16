@@ -1,0 +1,84 @@
+# LiteLLM User - native (REST/JSON) schema.
+# Read-only inventory object: all attributes are flat (nested JSON is mapped via json.path,
+# map-valued fields are intentionally not exposed).
+objectClasses:
+  User:
+    description: "A LiteLLM proxy user (internal user with role, budget and model access)"
+    attributes:
+      user_id:
+        jsonType: string
+        description: "Unique user identifier"
+      user_alias:
+        jsonType: string
+        description: "Human readable alias of the user"
+      user_email:
+        jsonType: string
+        openApiFormat: email
+        description: "E-mail address of the user"
+      user_role:
+        jsonType: string
+        description: "Role of the user in the proxy (e.g. proxy_admin, user)"
+      sso_user_id:
+        jsonType: string
+        description: "External SSO user id, when the user was provisioned via SSO"
+      team_id:
+        jsonType: string
+        description: "Legacy single-team id of the user"
+      organization_id:
+        jsonType: string
+        description: "Id of the organization the user belongs to"
+      password_reset_required:
+        jsonType: boolean
+        description: "Whether the user is forced to change the password"
+      last_breach_check_at:
+        jsonType: string
+        openApiFormat: date-time
+        description: "When the user's password was last checked for breaches"
+      max_budget:
+        jsonType: number
+        openApiFormat: double
+        description: "Maximum budget (USD) for the user"
+      spend:
+        jsonType: number
+        openApiFormat: double
+        description: "Current spend (USD) of the user"
+      models:
+        jsonType: string
+        multiValued: true
+        description: "Models the user is allowed to access (empty means all)"
+      max_parallel_requests:
+        jsonType: integer
+        description: "Maximum number of parallel requests"
+      tpm_limit:
+        jsonType: integer
+        description: "Tokens per minute limit"
+      rpm_limit:
+        jsonType: integer
+        description: "Requests per minute limit"
+      budget_duration:
+        jsonType: string
+        description: "Duration of the budget period (e.g. 30d, 12h)"
+      budget_reset_at:
+        jsonType: string
+        openApiFormat: date-time
+        description: "When the budget window resets"
+      allowed_cache_controls:
+        jsonType: string
+        multiValued: true
+        description: "Cache controls the user is allowed to use"
+      policies:
+        jsonType: string
+        multiValued: true
+        description: "Policies attached to the user"
+      key_count:
+        jsonType: integer
+        description: "Number of virtual keys owned by the user"
+      created_at:
+        jsonType: string
+        openApiFormat: date-time
+        description: "Creation timestamp"
+      updated_at:
+        jsonType: string
+        openApiFormat: date-time
+        description: "Last update timestamp"
+

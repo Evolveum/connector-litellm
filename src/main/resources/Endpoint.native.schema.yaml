@@ -1,0 +1,114 @@
+# LiteLLM Endpoint (model deployment) - native (REST/JSON) schema.
+# An endpoint is one concrete deployment (provider + model + base URL) that a model group
+# routes to. Data comes from GET /v2/model/info, whose rows nest the deployment in
+# litellm_params and the pricing/limits in model_info - both are flattened here.
+objectClasses:
+  Endpoint:
+    description: "A LiteLLM model deployment (provider endpoint a model group routes to)"
+    attributes:
+      id:
+        jsonType: string
+        json:
+          path: $.model_info.id
+        description: "Stable id of the deployment row in the proxy database"
+      model_name:
+        jsonType: string
+        description: "Model group the deployment belongs to"
+      deployment_model:
+        jsonType: string
+        json:
+          path: $.litellm_params.model
+        description: "Provider-side model name of the deployment"
+      provider:
+        jsonType: string
+        json:
+          path: $.litellm_params.custom_llm_provider
+        description: "LLM provider of the deployment"
+      api_base:
+        jsonType: string
+        json:
+          path: $.litellm_params.api_base
+        description: "Base URL the deployment is called on"
+      credential_name:
+        jsonType: string
+        json:
+          path: $.litellm_params.litellm_credential_name
+        description: "Name of the credential the deployment uses"
+      mode:
+        jsonType: string
+        json:
+          path: $.model_info.mode
+        description: "Request mode (chat, completion, embedding, ...)"
+      blocked:
+        jsonType: boolean
+        json:
+          path: $.model_info.blocked
+        description: "Whether the deployment is blocked"
+      direct_access:
+        jsonType: boolean
+        json:
+          path: $.model_info.direct_access
+        description: "Whether the deployment is directly addressable"
+      db_model:
+        jsonType: boolean
+        json:
+          path: $.model_info.db_model
+        description: "Whether the deployment is managed in the proxy database"
+      max_tokens:
+        jsonType: integer
+        json:
+          path: $.model_info.max_tokens
+        description: "Maximum tokens (context window)"
+      max_input_tokens:
+        jsonType: integer
+        json:
+          path: $.model_info.max_input_tokens
+        description: "Maximum input tokens"
+      max_output_tokens:
+        jsonType: integer
+        json:
+          path: $.model_info.max_output_tokens
+        description: "Maximum output tokens"
+      input_cost_per_token:
+        jsonType: number
+        openApiFormat: double
+        json:
+          path: $.model_info.input_cost_per_token
+        description: "Input cost per token (USD)"
+      output_cost_per_token:
+        jsonType: number
+        openApiFormat: double
+        json:
+          path: $.model_info.output_cost_per_token
+        description: "Output cost per token (USD)"
+      cache_read_input_token_cost:
+        jsonType: number
+        openApiFormat: double
+        json:
+          path: $.model_info.cache_read_input_token_cost
+        description: "Cost per cached input token (USD)"
+      cache_creation_input_token_cost:
+        jsonType: number
+        openApiFormat: double
+        json:
+          path: $.model_info.cache_creation_input_token_cost
+        description: "Cost per cache-creation input token (USD)"
+      tags:
+        jsonType: string
+        multiValued: true
+        json:
+          path: $.litellm_params.tags
+        description: "Tags of the deployment"
+      access_groups:
+        jsonType: string
+        multiValued: true
+        json:
+          path: $.model_info.access_groups
+        description: "Access groups the deployment is scoped to"
+      pricing_overrides:
+        jsonType: string
+        multiValued: true
+        json:
+          path: $.model_info.pricing_overrides
+        description: "Pricing fields overridden for the deployment"
+

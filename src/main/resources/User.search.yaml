@@ -1,0 +1,41 @@
+# LiteLLM User - search operations.
+# List endpoint: GET /user/list (paginated, wrapped as {"users": [...], ...}).
+# By-id lookup is served by the same endpoint via the user_ids parameter
+# (GET /user/info exists too, but wraps the user in an extra level and 404s
+# for users the caller cannot see).
+objectClasses:
+  User:
+    search:
+      endpoints:
+        - path: /user/list
+          emptyFilterSupported: true
+          objectsPath: $.users
+          pagingSupport:
+            parameters:
+              pageSize:
+                in: query
+                name: page_size
+              page:
+                in: query
+          # Note: the attributes bound to __UID__ / __NAME__ (user_id / user_email) expose
+          # their built-in connid name in the filter namespace, so they also serve UID/NAME
+          # filters (EqualsFilter(Uid) / EqualsFilter(Name)).
+          supportedFilters:
+            - spec: attribute("user_id").eq().anySingleValue()
+              request: |
+                request.queryParameter("user_ids", value)
+            - spec: attribute("user_email").eq().anySingleValue()
+              request: |
+                request.queryParameter("user_email", value)
+            - spec: attribute("user_email").contains().anySingleValue()
+              request: |
+                request.queryParameter("search", value)
+            - spec: attribute("user_alias").contains().anySingleValue()
+              request: |
+                request.queryParameter("search", value)
+            - spec: attribute("teams").eq().anySingleValue()
+              request: |
+                request.queryParameter("team", value.value.uid.uidValue)
+            - spec: attribute("organization").eq().anySingleValue()
+              request: |
+                request.queryParameter("organization_ids", value.value.uid.uidValue)

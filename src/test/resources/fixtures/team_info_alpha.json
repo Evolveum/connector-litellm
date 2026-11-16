@@ -1,0 +1,41 @@
+{
+  "team_id": "team-alpha",
+  "team_info": {
+    "team_id": "team-alpha",
+    "team_alias": "Alpha",
+    "organization_id": "org-1",
+    "models": [
+      "gpt-4o"
+    ],
+    "blocked": false,
+    "spend": 33.1,
+    "max_budget": 200.0,
+    "soft_budget": null,
+    "budget_duration": "30d",
+    "budget_reset_at": "2026-12-15T00:00:00Z",
+    "tpm_limit": 2000000,
+    "rpm_limit": 100,
+    "tpd_limit": null,
+    "max_parallel_requests": null,
+    "policies": [],
+    "team_member_permissions": [],
+    "access_group_ids": [],
+    "default_team_member_models": [],
+    "members": [
+      "user-tony",
+      "user-alice"
+    ],
+    "admins": [
+      "user-tony"
+    ],
+    "created_at": "2025-07-01T00:00:00Z",
+    "updated_at": "2026-11-01T00:00:00Z"
+  },
+  "keys": [
+    {
+      "token": "tok-key-team",
+      "key_alias": "Alpha Team Key"
+    }
+  ],
+  "team_memberships": []
+}

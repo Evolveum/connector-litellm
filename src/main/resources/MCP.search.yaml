@@ -1,0 +1,22 @@
+# LiteLLM MCP server - search operations.
+# GET /v1/mcp/server lists all servers (bare JSON array, filterable by team_id);
+# GET /v1/mcp/server/{server_id} reads one.
+objectClasses:
+  MCP:
+    search:
+      endpoints:
+        - path: /v1/mcp/server
+          responseFormat: JSON_ARRAY
+          emptyFilterSupported: true
+          supportedFilters:
+            - spec: attribute("teams").eq().anySingleValue()
+              request: |
+                request.queryParameter("team_id", value.value.uid.uidValue)
+        - path: /v1/mcp/server/{server_id}
+          singleResult: true
+          notFoundIsNoResult: true
+          # server_id is bound to __UID__, so this entry also serves UID filters.
+          supportedFilters:
+            - spec: attribute("server_id").eq().anySingleValue()
+              request: |
+                request.pathParameter("server_id", value)

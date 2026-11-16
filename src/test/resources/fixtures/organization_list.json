@@ -1,0 +1,49 @@
+[
+  {
+    "organization_id": "org-1",
+    "organization_alias": "Example Org",
+    "budget_id": null,
+    "spend": 545.5,
+    "models": [],
+    "created_by": "user-tony",
+    "updated_by": "user-tony",
+    "created_at": "2025-06-01T00:00:00Z",
+    "updated_at": "2026-11-01T00:00:00Z",
+    "members": [
+      {
+        "user_id": "user-tony",
+        "user_email": "tony@example.com",
+        "user_role": "proxy_admin",
+        "organization_id": "org-1",
+        "budget_id": null,
+        "spend": 504.25,
+        "created_at": "2025-06-10T00:00:00Z",
+        "updated_at": null
+      },
+      {
+        "user_id": "user-alice",
+        "user_email": "alice@example.com",
+        "user_role": "user",
+        "organization_id": "org-1",
+        "budget_id": null,
+        "spend": 12.5,
+        "created_at": "2025-09-01T00:00:00Z",
+        "updated_at": null
+      }
+    ],
+    "teams": [
+      {
+        "team_id": "team-alpha",
+        "team_alias": "Alpha",
+        "spend": 33.1,
+        "max_budget": 200.0
+      },
+      {
+        "team_id": "team-beta",
+        "team_alias": "Beta",
+        "spend": 1.0,
+        "max_budget": null
+      }
+    ]
+  }
+]

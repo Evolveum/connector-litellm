@@ -1,0 +1,6 @@
+# LiteLLM User - ConnId mapping.
+objectClasses:
+  User:
+    connId:
+      UID: user_id
+      NAME: user_email

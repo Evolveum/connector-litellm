@@ -1,0 +1,6 @@
+# LiteLLM Model (model group) - ConnId mapping.
+objectClasses:
+  Model:
+    connId:
+      UID: model_group
+      NAME: model_group

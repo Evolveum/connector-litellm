@@ -1,0 +1,75 @@
+# LiteLLM MCP server - native (REST/JSON) schema.
+# Data comes from GET /v1/mcp/server (bare array) and GET /v1/mcp/server/{server_id}.
+# The team grants (teams) are flat maps {team_id: team_alias} in the payload; map-valued tool
+# metadata (pinned_tools, tool_name_to_*, static_headers, env_vars) is intentionally not exposed.
+objectClasses:
+  MCP:
+    description: "An MCP server configured in the LiteLLM proxy"
+    attributes:
+      server_id:
+        jsonType: string
+        description: "Unique MCP server identifier"
+      server_name:
+        jsonType: string
+        description: "Name of the MCP server"
+      alias:
+        jsonType: string
+        description: "Alias of the MCP server"
+      description:
+        jsonType: string
+        description: "Description of the MCP server"
+      url:
+        jsonType: string
+        description: "URL the MCP server is reached at"
+      spec_path:
+        jsonType: string
+        description: "Path of the OpenAPI spec, for spec-backed servers"
+      transport:
+        jsonType: string
+        description: "Transport (sse, http, stdio)"
+      auth_type:
+        jsonType: string
+        description: "Authentication type towards the upstream MCP server"
+      instructions:
+        jsonType: string
+        description: "Instructions advertised by the server"
+      status:
+        jsonType: string
+        description: "Health status (healthy, reachable, unhealthy, unknown)"
+      last_health_check:
+        jsonType: string
+        openApiFormat: date-time
+        description: "When the server was last health-checked"
+      is_config:
+        jsonType: boolean
+        description: "Whether the server is defined in the config file (read-only)"
+      allow_all_keys:
+        jsonType: boolean
+        description: "Whether every key can use the server"
+      mcp_access_groups:
+        jsonType: string
+        multiValued: true
+        description: "MCP access groups the server is scoped to"
+      allowed_tools:
+        jsonType: string
+        multiValued: true
+        description: "Tools the server is restricted to"
+      extra_headers:
+        jsonType: string
+        multiValued: true
+        description: "Extra headers applied to requests towards the server"
+      created_at:
+        jsonType: string
+        openApiFormat: date-time
+        description: "Creation timestamp"
+      updated_at:
+        jsonType: string
+        openApiFormat: date-time
+        description: "Last update timestamp"
+      created_by:
+        jsonType: string
+        description: "User that created the server"
+      updated_by:
+        jsonType: string
+        description: "User that updated the server last"
+

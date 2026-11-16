@@ -1,0 +1,80 @@
+# LiteLLM Team - native (REST/JSON) schema.
+# Data comes from GET /team/list (bare array of team objects) and
+# GET /team/info?team_id=... (team object under team_info). members/admins carry user ids;
+# members_with_roles and metadata are structured and intentionally not exposed.
+objectClasses:
+  Team:
+    description: "A LiteLLM team grouping users and keys under a shared budget and model access"
+    attributes:
+      team_id:
+        jsonType: string
+        description: "Unique team identifier"
+      team_alias:
+        jsonType: string
+        description: "Human readable alias of the team"
+      organization_id:
+        jsonType: string
+        description: "Id of the organization the team belongs to"
+      models:
+        jsonType: string
+        multiValued: true
+        description: "Models the team is allowed to access (empty means all)"
+      blocked:
+        jsonType: boolean
+        description: "Whether the team is blocked"
+      spend:
+        jsonType: number
+        openApiFormat: double
+        description: "Current spend (USD) of the team"
+      max_budget:
+        jsonType: number
+        openApiFormat: double
+        description: "Maximum budget (USD) for the team"
+      soft_budget:
+        jsonType: number
+        openApiFormat: double
+        description: "Soft budget (USD) for the team"
+      budget_duration:
+        jsonType: string
+        description: "Duration of the budget period (e.g. 30d, 12h)"
+      budget_reset_at:
+        jsonType: string
+        openApiFormat: date-time
+        description: "When the budget window resets"
+      tpm_limit:
+        jsonType: integer
+        description: "Tokens per minute limit"
+      rpm_limit:
+        jsonType: integer
+        description: "Requests per minute limit"
+      tpd_limit:
+        jsonType: integer
+        description: "Tokens per day limit"
+      max_parallel_requests:
+        jsonType: integer
+        description: "Maximum number of parallel requests"
+      policies:
+        jsonType: string
+        multiValued: true
+        description: "Policies attached to the team"
+      team_member_permissions:
+        jsonType: string
+        multiValued: true
+        description: "Permissions granted to team members"
+      access_group_ids:
+        jsonType: string
+        multiValued: true
+        description: "Access groups the team is scoped to"
+      default_team_member_models:
+        jsonType: string
+        multiValued: true
+        description: "Default models for new team members"
+      created_at:
+        jsonType: string
+        openApiFormat: date-time
+        description: "Creation timestamp"
+      updated_at:
+        jsonType: string
+        openApiFormat: date-time
+        description: "Last update timestamp"
+

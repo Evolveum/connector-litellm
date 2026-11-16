@@ -1,0 +1,34 @@
+{
+  "data": [
+    {
+      "model_name": "gpt-4o",
+      "litellm_params": {
+        "model": "gpt-4o-2024-08-06",
+        "custom_llm_provider": "azure",
+        "api_base": "https://azure-proxy.example.com/openai/deployments",
+        "litellm_credential_name": "Azure",
+        "tags": null
+      },
+      "model_info": {
+        "id": "ep-2222",
+        "mode": "chat",
+        "blocked": true,
+        "direct_access": false,
+        "db_model": true,
+        "max_tokens": null,
+        "max_input_tokens": null,
+        "max_output_tokens": null,
+        "input_cost_per_token": null,
+        "output_cost_per_token": null,
+        "cache_read_input_token_cost": null,
+        "cache_creation_input_token_cost": null,
+        "access_groups": null,
+        "pricing_overrides": null
+      }
+    }
+  ],
+  "total_count": 1,
+  "current_page": 1,
+  "total_pages": 1,
+  "size": 25
+}

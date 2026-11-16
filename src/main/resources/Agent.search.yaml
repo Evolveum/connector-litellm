@@ -1,0 +1,23 @@
+# LiteLLM Agent - search operations.
+# GET /v1/agents lists all agents (bare JSON array); GET /v1/agents/{agent_id}
+# reads one. The query parameter on the list endpoint searches by name, but
+# requires the server to have agent search (an embedding model) configured.
+objectClasses:
+  Agent:
+    search:
+      endpoints:
+        - path: /v1/agents
+          responseFormat: JSON_ARRAY
+          emptyFilterSupported: true
+          supportedFilters:
+            - spec: attribute("agent_name").contains().anySingleValue()
+              request: |
+                request.queryParameter("query", value)
+        - path: /v1/agents/{agent_id}
+          singleResult: true
+          notFoundIsNoResult: true
+          # agent_id is bound to __UID__, so this entry also serves UID filters.
+          supportedFilters:
+            - spec: attribute("agent_id").eq().anySingleValue()
+              request: |
+                request.pathParameter("agent_id", value)

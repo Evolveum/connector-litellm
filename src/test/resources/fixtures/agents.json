@@ -1,0 +1,37 @@
+[
+  {
+    "identity": null,
+    "identity_managed": false,
+    "enabled": true,
+    "execution_mode": "autonomous",
+    "jwt_auth_configured": false,
+    "agent_id": "agent-1",
+    "agent_name": "OpenCode @ Spark",
+    "litellm_params": {
+      "model_list": [
+        {
+          "model_name": "gpt-4o"
+        }
+      ]
+    },
+    "agent_card_params": null,
+    "spend": 48.75270374999997,
+    "tpm_limit": null,
+    "rpm_limit": null,
+    "session_tpm_limit": null,
+    "session_rpm_limit": null,
+    "extra_headers": [],
+    "access_group_ids": [],
+    "keys": [
+      {
+        "token": "tok-key-agent",
+        "key_alias": "OpenCode Spark",
+        "key_name": "sk-...4PlQ"
+      }
+    ],
+    "created_at": "2026-06-18T11:57:44.922000Z",
+    "updated_at": "2026-11-10T22:05:11.316000Z",
+    "created_by": "user-tony",
+    "updated_by": "user-tony"
+  }
+]

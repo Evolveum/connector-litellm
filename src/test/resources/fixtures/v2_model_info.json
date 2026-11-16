@@ -1,0 +1,90 @@
+{
+  "data": [
+    {
+      "model_name": "gpt-4o",
+      "litellm_params": {
+        "model": "gpt-4o",
+        "custom_llm_provider": "openai",
+        "api_base": "https://api.openai.com/v1",
+        "litellm_credential_name": "OpenAI",
+        "tags": [
+          "prod"
+        ]
+      },
+      "model_info": {
+        "id": "ep-1111",
+        "mode": "chat",
+        "blocked": false,
+        "direct_access": true,
+        "db_model": true,
+        "max_tokens": 128000,
+        "max_input_tokens": 128000,
+        "max_output_tokens": 16384,
+        "input_cost_per_token": 5e-06,
+        "output_cost_per_token": 1.5e-05,
+        "cache_read_input_token_cost": 6e-07,
+        "cache_creation_input_token_cost": null,
+        "access_groups": [
+          "alpha"
+        ],
+        "pricing_overrides": null
+      }
+    },
+    {
+      "model_name": "gpt-4o",
+      "litellm_params": {
+        "model": "gpt-4o-2024-08-06",
+        "custom_llm_provider": "azure",
+        "api_base": "https://azure-proxy.example.com/openai/deployments",
+        "litellm_credential_name": "Azure",
+        "tags": null
+      },
+      "model_info": {
+        "id": "ep-2222",
+        "mode": "chat",
+        "blocked": true,
+        "direct_access": false,
+        "db_model": true,
+        "max_tokens": null,
+        "max_input_tokens": null,
+        "max_output_tokens": null,
+        "input_cost_per_token": null,
+        "output_cost_per_token": null,
+        "cache_read_input_token_cost": null,
+        "cache_creation_input_token_cost": null,
+        "access_groups": null,
+        "pricing_overrides": null
+      }
+    },
+    {
+      "model_name": "qwen3.8",
+      "litellm_params": {
+        "model": "qwen3.8:27b-256k",
+        "custom_llm_provider": "ollama",
+        "api_base": "http://ollama.internal:11434",
+        "litellm_credential_name": null,
+        "tags": null
+      },
+      "model_info": {
+        "id": "ep-3333",
+        "mode": "chat",
+        "blocked": false,
+        "direct_access": true,
+        "db_model": true,
+        "max_tokens": null,
+        "max_input_tokens": null,
+        "max_output_tokens": null,
+        "input_cost_per_token": null,
+        "output_cost_per_token": null,
+        "cache_read_input_token_cost": null,
+        "cache_creation_input_token_cost": null,
+        "access_groups": null,
+        "pricing_overrides": null
+      }
+    }
+  ],
+  "total_count": 3,
+  "current_page": 1,
+  "total_pages": 1,
+  "size": 25
+}
