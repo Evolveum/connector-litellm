@@ -1,0 +1,12 @@
+.aider*
+**/target/
+*.iml
+local
+.idea
+**/.classpath
+.classpath
+**/.settings
+**/.project
+.vscode
+pom.xml.versionsBackup
+.DS_Store
